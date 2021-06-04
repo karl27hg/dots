@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -40,14 +41,12 @@ public class DotFragment extends Fragment {
 
     void init() {
         dotRv = getView().findViewById(R.id.dot_rv);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        dotRv.setLayoutManager(layoutManager);
         dotRvAdapter = new DotRvAdapter();
         dotRvAdapter.addItem("hello");
         dotRvAdapter.addItem("world");
         dotRv.setAdapter(dotRvAdapter);
     }
+
 }
